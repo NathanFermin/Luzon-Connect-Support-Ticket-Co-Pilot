@@ -54,7 +54,7 @@ A human agent must review or edit it.
     return draft
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #this is to test if it works!
     cases = {
         "1": ("Base case", "T-004", ["red_light.md"]),
         "2": (

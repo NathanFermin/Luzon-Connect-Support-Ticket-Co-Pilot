@@ -9,7 +9,7 @@ A small support-agent demo for my Patunay application. It uses fictional Luzon C
 3. The agent reviews the output in the terminal and can edit the category or reply.
 4. If the agent approves, `sandbox.py` records the final result in `tickets.jsonl`. No reply is sent to a real customer.
 
-The current script uses ticket T-004 as its test case. Other sample tickets and articles are included for further testing.
+The script offers three sample cases: a single matching article, articles with different helpful-vote counts, and close vote counts where recency takes priority.
 
 ## Run the demo
 
@@ -41,9 +41,9 @@ The current script sends all sample articles to Gemini and uses a fixed ticket. 
 - Retrieve relevant articles before calling Gemini.
 - Enforce the conflict and ranking rule in Python.
 - Verify that citations refer to supplied articles.
-- Add a clearer agent review screen and persistent ticket storage.
+- Add a clearer and more visually appealing agent review screen and persistent ticket storage.
 - Test the regular, conflict, and recency cases end to end.
 
 ## AI tools used
 
-I used ChatGPT/Codex to understand the brief, discuss tradeoffs, and help draft and debug code and documentation. The demo uses Google Gemini to suggest a category and draft a reply. I chose the sample cases, conflict policy, and agent approval flow. AI output remains a suggestion for human review.
+I used ChatGPT to understand the brief, learn the file formats and Git workflow, discuss tradeoffs, draft and debug parts of the Python code, help write the README, and revise the assumptions document. I chose the sample ticket scenarios and articles, proposed helpful votes and the 10% recency rule, and reviewed the co-pilot’s output. The demo uses the Gemini API to suggest ticket categories and cited replies. An agent can edit or approve those suggestions before the mock helpdesk saves them. I did not train a model or use real company data.

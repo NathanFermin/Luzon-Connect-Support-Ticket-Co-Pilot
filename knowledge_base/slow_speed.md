@@ -6,5 +6,5 @@ Helpful votes: 20
 
 If your internet is slow:
 
-Step 1: Call your internet provider. 
-Step 2: If not check the LAN cables and if they are secured into the router. 
+Step 1: Restart your router. 
+Step 2: Unplug and replug all LAN cables. 

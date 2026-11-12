@@ -30,4 +30,4 @@ This policy is currently expressed in the instructions to Gemini. The code does 
 
 - Gemini suggests the category and reply using the supplied articles. Its private key is supplied through the `GEMINI_API_KEY` environment variable.
 - Free-tier limits and model availability may affect whether a request succeeds.
-- The current script uses a fixed test ticket and sends all sample articles. Article retrieval and broader testing are future work.
+- The current script lets the user choose from three sample tickets and sends Gemini the articles assigned to each case. Automatic article retrieval and broader testing are future work.

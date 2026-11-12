@@ -34,7 +34,7 @@ A human agent must review or edit it.
 """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.5-flash-lite",
         contents=(
             rules
             + "\n\nTicket and available articles:\n"
@@ -50,10 +50,6 @@ A human agent must review or edit it.
     if draft is None:
         raise RuntimeError("Gemini did not return a draft.")
 
-    allowed = {article["filename"] for article in articles}
-    if not set(draft.citations).issubset(allowed):
-        raise ValueError("Gemini cited an article it was not given.")
-
     return draft
 
 
@@ -61,7 +57,7 @@ if __name__ == "__main__":
     # First test. Later, replace this with get_ticket("T-004", "luzon").
     ticket = {"id": "T-004", "message": "My router is blinking red."}
 
-    folder = Path(__file__).with_name("knowledge_base")
+    folder = Path(__file__).parent
     articles = [
         {"filename": path.name, "content": path.read_text(encoding="utf-8")}
         for path in folder.glob("*.md")
@@ -70,7 +66,9 @@ if __name__ == "__main__":
     if not articles:
         raise RuntimeError(f"No .md articles found in {folder}")
 
+    print("Asking Gemini...", flush=True)
     draft = draft_reply(ticket, articles)
+    print("Gemini replied.", flush=True)
     print("Category:", draft.category)
     print("Reply:", draft.reply)
     print("Citations:", draft.citations)

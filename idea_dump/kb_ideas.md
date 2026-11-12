@@ -10,4 +10,6 @@
     # I assumed each article has a DATE, and a HELPFUL VOTE attribute. 
     # I also am assuming: If the counts are within 10% of the higher count, give the more recently updated article priority. So 20 versus 18 is exactly a 10% difference, and the newer article wins the ranking. If the gap is larger, the article with more helpful votes ranks first.
     # I assume that the copilot will compare only articles applicable to the same issue; when their helpful-vote counts differ by at most 10% of the higher count, rank the newer article first; always flag a contradiction for agent review. 
-    ## I know there's a limitation here, because older articles may tend to have more helpful scores simply because they've been around for longer, but I wanted to demonstrate that for an issue, if helpfulness is controlled for, recency should then take priority. 
+    # I know there's a limitation here, because older articles may tend to have more helpful scores simply because they've been around for longer, but I wanted to demonstrate that for an issue, if helpfulness is controlled for, recency should then take priority. 
+    # I'm also assuming all the router models are the same, and the only variation is the Luzon Connect's understanding and advice of problems. 
+    # I'm assuming these articles are meant to be read by workers at Luzon Connect, not directly by customers. 

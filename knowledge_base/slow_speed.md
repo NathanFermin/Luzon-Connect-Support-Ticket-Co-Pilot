@@ -3,6 +3,7 @@
 
 Last Updated: 09-12-2011
 Helpful votes: 20
+Category: Slow Speed
 
 If your internet is slow:
 

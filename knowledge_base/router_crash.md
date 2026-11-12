@@ -3,6 +3,7 @@
 
 Last Updated: 12-29-2026
 Helpful votes: 2
+Category: Connection Issue
 
 If the router keeps crashing please try the following:
 

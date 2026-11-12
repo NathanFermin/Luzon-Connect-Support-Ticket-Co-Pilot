@@ -3,6 +3,7 @@
 
 Last Updated: 09-12-2026
 Helpful votes: 56
+Category: Connection Issue
 
 If your router is blinking red it could mean one of the following:
 - Insufficient Power

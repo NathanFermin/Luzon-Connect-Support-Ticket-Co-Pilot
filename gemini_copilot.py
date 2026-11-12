@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from sandbox import update_ticket, publish_ticket
 
 from google import genai
 from google.genai import types
@@ -73,3 +74,26 @@ if __name__ == "__main__":
     print("Reply:", draft.reply)
     print("Citations:", draft.citations)
     print("Conflict:", draft.conflict_note or "None")
+
+    edited_category = input(
+    "\nEdit category, or press Enter to keep suggestion: "
+).strip()
+final_category = edited_category or draft.category
+
+edited_reply = input(
+    "\nType an edited reply, or press Enter to keep the draft: "
+).strip()
+final_reply = edited_reply or draft.reply
+
+print("\nFinal category:", final_category)
+print("Final reply:", final_reply)
+
+update_ticket(ticket["id"], final_category, final_reply, "luzon")
+
+approval = input("\nAgent: approve this reply? (yes/no): ").strip().lower()
+if approval == "yes":
+    print(publish_ticket(
+        ticket["id"], final_category, final_reply, "connect"
+    ))
+else:
+    print("Not approved. Ticket remains For Review.")

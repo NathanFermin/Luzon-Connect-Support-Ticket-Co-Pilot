@@ -15,3 +15,4 @@
     # Should use MM/DD/YYYY since thats the standard in the PH.
 
     # I'm assuming I can provide the local keys myself. 
+    # I'm using the Gemini free-tier API because it has no cost. 

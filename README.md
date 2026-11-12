@@ -33,7 +33,7 @@ This rule is currently given to Gemini as an instruction. The Python code does n
 
 The real knowledge-base export, resolved tickets, helpdesk API specification, and helpdesk key were not supplied. I created a small fictional sample and local mock helpdesk functions. Helpful-vote counts are sample values, not live feedback. See `notes/ideas/assumptions.md` for my detailed decisions.
 
-The current script sends all sample articles to Gemini and uses a fixed ticket. It does not yet retrieve only the most relevant articles or verify every claim in the draft. Open tickets are stored in memory, so restarting the program resets them.
+The current script lets the user choose one of three sample tickets and sends Gemini only the articles assigned to that case.
 
 ## Next steps
 

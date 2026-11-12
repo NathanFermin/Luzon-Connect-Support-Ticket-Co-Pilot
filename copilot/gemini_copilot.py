@@ -5,13 +5,11 @@ from google import genai
 from google.genai import types
 from pydantic import BaseModel
 
-
 class CopilotDraft(BaseModel):
     category: str
     reply: str
     citations: list[str]
     conflict_note: str
-
 
 def draft_reply(ticket: dict, articles: list[dict]) -> CopilotDraft:
     """Ask Gemini for a draft; an agent must review it before publishing."""

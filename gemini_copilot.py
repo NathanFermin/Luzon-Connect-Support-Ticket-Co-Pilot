@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from sandbox import update_ticket, publish_ticket
+from sandbox import get_ticket, update_ticket, publish_ticket
 
 from google import genai
 from google.genai import types
@@ -55,45 +55,80 @@ A human agent must review or edit it.
 
 
 if __name__ == "__main__":
-    # First test. Later, replace this with get_ticket("T-004", "luzon").
-    ticket = {"id": "T-004", "message": "My router is blinking red."}
+    cases = {
+        "1": ("Base case", "T-004", ["red_light.md"]),
+        "2": (
+            "Conflict with different votes",
+            "T-006",
+            ["router_crash.md", "router_crash_2.md"],
+        ),
+        "3": (
+            "Close votes; newer article first",
+            "T-005",
+            ["slow_speed.md", "slow_speed_2.md"],
+        ),
+    }
+
+    print("1. Base case: blinking red light")
+    print("2. Conflict case: router crashing")
+    print("3. Recency case: slow internet")
+
+    choice = input("Choose a test (1, 2, or 3): ").strip()
+    if choice not in cases:
+        raise SystemExit("Please choose 1, 2, or 3.")
+
+    label, ticket_id, filenames = cases[choice]
+
+    ticket = get_ticket(ticket_id, "luzon")
+    if isinstance(ticket, str):
+        raise SystemExit(ticket)
 
     folder = Path(__file__).parent
     articles = [
-        {"filename": path.name, "content": path.read_text(encoding="utf-8")}
-        for path in folder.glob("*.md")
+        {
+            "filename": name,
+            "content": (folder / name).read_text(encoding="utf-8"),
+        }
+        for name in filenames
     ]
 
-    if not articles:
-        raise RuntimeError(f"No .md articles found in {folder}")
-
+    print(f"\nTesting: {label}")
     print("Asking Gemini...", flush=True)
+
     draft = draft_reply(ticket, articles)
-    print("Gemini replied.", flush=True)
-    print("Category:", draft.category)
-    print("Reply:", draft.reply)
+
+    print("Gemini replied.")
+    print("\nSuggested category:", draft.category)
     print("Citations:", draft.citations)
     print("Conflict:", draft.conflict_note or "None")
+    print("\nSuggested reply:\n", draft.reply)
 
     edited_category = input(
-    "\nEdit category, or press Enter to keep suggestion: "
-).strip()
-final_category = edited_category or draft.category
+        "\nEdit category, or press Enter to keep suggestion: "
+    ).strip()
+    final_category = edited_category or draft.category
 
-edited_reply = input(
-    "\nType an edited reply, or press Enter to keep the draft: "
-).strip()
-final_reply = edited_reply or draft.reply
+    edited_reply = input(
+        "\nType an edited reply, or press Enter to keep the draft:\n"
+    ).strip()
+    final_reply = edited_reply or draft.reply
 
-print("\nFinal category:", final_category)
-print("Final reply:", final_reply)
+    print("\nFinal category:", final_category)
+    print("Final reply:", final_reply)
 
-update_ticket(ticket["id"], final_category, final_reply, "luzon")
+    update_result = update_ticket(
+        ticket_id, final_category, final_reply, "luzon"
+    )
+    print(update_result)
 
-approval = input("\nAgent: approve this reply? (yes/no): ").strip().lower()
-if approval == "yes":
-    print(publish_ticket(
-        ticket["id"], final_category, final_reply, "connect"
-    ))
-else:
-    print("Not approved. Ticket remains For Review.")
+    approval = input(
+        "\nAgent: approve this reply? (yes/no): "
+    ).strip().lower()
+
+    if approval == "yes":
+        publish_result = publish_ticket(
+            ticket_id, final_category, final_reply, "connect"
+        )
+        print(publish_result)
+    else:
+        print("Not approved. Ticket remains For Review.")

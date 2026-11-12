@@ -43,6 +43,7 @@ The current script lets the user choose one of three sample tickets and sends Ge
 - Verify that citations refer to supplied articles.
 - Add a clearer and more visually appealing agent review screen and persistent ticket storage.
 - Test the regular, conflict, and recency cases end to end.
+- Implement a "Did this help?" Button
 
 ## AI tools used
 

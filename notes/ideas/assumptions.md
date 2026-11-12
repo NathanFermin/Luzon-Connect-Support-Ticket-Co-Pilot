@@ -2,7 +2,7 @@
 
 ## Sample data
 
-- The company’s files and real helpdesk sandbox were not supplied. The articles and tickets in this repository are fictional samples.
+- The company’s files and real helpdesk sandbox were not supplied. The articles and tickets in this repository are all fictional samples.
 - The help articles are written for Luzon Connect support agents. The co-pilot turns their guidance into customer-facing drafts.
 - The sample router articles assume one router model, so differences between articles represent different guidance rather than different devices.
 - Each article has a category, an update date, and a helpful-vote count. The sample files use `MM-DD-YYYY` dates.

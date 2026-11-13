@@ -1,3 +1,7 @@
 {"id":"T-001","message":"My router is blinking red.","category":"Connection issue","solution":"The agent checked for an outage."}
 {"id":"T-002","message":"My internet is slow.","category":"Slow speed","solution":"The agent helped identify a device using excess bandwidth."}
 {"id":"T-003","message":"Why is my router crashing?","category":"Connection issue","solution":"The agent guided the user to reset the router."}
+{"id": "T-005", "message": "My internet is slow.", "category": "Slow Connection", "status": "Solved", "reply": "Testing that this reply is edited!"}
+{"id": "T-005", "message": "My internet is slow.", "category": "Slow Connection", "status": "Solved", "reply": "Editing this reply!"}
+{"id": "T-005", "message": "My internet is slow.", "category": "Connection Issue", "status": "Solved", "reply": "I am editing this reply!"}
+{"id": "T-005", "message": "My internet is slow.", "category": "Connection Issue", "status": "Solved", "reply": "I am editing this!"}

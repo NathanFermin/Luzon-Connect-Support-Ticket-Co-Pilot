@@ -1,7 +1,7 @@
 
 # Router Keeps Crashing
 
-Last Updated: 12-29-2026
+Last Updated: 19-29-2026
 Helpful votes: 2
 Category: Connection Issue
 

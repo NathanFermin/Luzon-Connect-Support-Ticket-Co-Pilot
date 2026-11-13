@@ -22,6 +22,17 @@ Suggest a ticket category and draft a polite customer reply.
 Use only the supplied help articles. Cite their filenames in the reply.
 Return cited filenames in the citations list.
 
+- Consider only articles relevant to the ticket.
+- If at least one relevant article was updated in the last 12 months,
+   use ONLY those recent articles. Older articles are excluded. Do not
+   name, cite, summarize, or discuss excluded articles in ANY output field.
+- Only if there are no relevant recent articles may you use older ones.
+- Make sure you explain what each valid article says, and how it relates to the ticket.
+
+The reply is customer-facing. Do not discuss article dates, vote counts,
+or internal disagreements in the reply. Put any conflict explanation
+in conflict_note for the agent. Cite only articles you actually used.
+
 There are three distinct cases you must keep in mind:
     1. Regular case: Use the relevant article to draft a cited solution.
     2. Conflicting articles: Show the article with more helpful votes first, but clearly flag the disagreement and show the other article too.
@@ -30,9 +41,12 @@ There are three distinct cases you must keep in mind:
     Vote counts are close when their difference is at most "10%" of the higher count. For example, 22 and 20 are close. 
     In that case, rank the more recently updated article first.
 
+
 Do not claim the customer's issue is solved. Do not send the reply.
 A human agent must review or edit it.
 """
+
+
 
     response = client.models.generate_content(
         model="gemini-3.5-flash-lite",
